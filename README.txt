@@ -1,132 +1,104 @@
-# Cravings Social Media App - Setup Guide
+Cravings — Full-Stack Social Media App for Food Lovers
+A complete social media web app built with React (Vite) frontend and Django REST Framework backend. Users can share food cravings, post photos, interact via likes/comments, and connect with other food enthusiasts.​
 
-> A full-stack social media platform built with Django REST Framework backend and React frontend. Share cravings, posts, follow users, and build your food community!
+Demo Video
+Watch the demo here:
+[
+GitHub README files use Markdown, which does not support direct video embedding or playback. The reliable method is to upload videos to external hosts like Google Drive or YouTube and link them via a clickable thumbnail or badge. Direct loading of videos (e.g., via <video> tags or iframes) is blocked in GitHub's sandboxed viewer for security reasons.​
 
-***
+Table of Contents
+Overview
 
-## 🚀 Quick Start
+Quick Start
 
-### Prerequisites
-- Python 3.9+
-- Node.js 16+ and npm
-- Git
-- MySQL Server (or PostgreSQL)
+Project Structure
 
-***
+Backend Setup (Django)
 
-## 📁 Project Structure
+Frontend Setup (React + Vite)
 
-```
+API Endpoints
+
+Features
+
+Security
+
+Screenshots
+
+Developer
+
+License
+
+Overview
+Cravings is a modern full-stack app that allows users to post pictures of dishes and food cravings, like and comment on content, follow other foodies, manage profiles with avatars, and view personalized feeds. It uses JWT for secure authentication and MySQL for data storage. The app solves the need for a niche social platform focused on food sharing while demonstrating full-stack development with React and Django.​​
+
+Quick Start
+Clone the Repository
+text
+git clone https://github.com/rezwanali2003/cravings.git
+cd cravings
+Backend Setup
+text
+cd backend
+python -m venv venv
+venv\Scripts\activate  # On Windows; use source venv/bin/activate on Linux/Mac
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+Frontend Setup
+text
+cd ../frontend
+npm install
+npm run dev
+The frontend runs at http://localhost:5173, and the backend API at http://127.0.0.1:8000. Test by registering a user, logging in, and creating posts.​
+
+Project Structure
+text
 Cravings/
-├── backend/                 # Django REST API
+├── backend/
 │   ├── manage.py
-│   ├── backend/             # Main Django project
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── users/               # Users app (auth, profiles)
+│   ├── backend/               # Django core settings & URLs
+│   ├── users/                 # Handles user auth & profiles
 │   │   ├── models.py
 │   │   ├── views.py
 │   │   ├── serializers.py
 │   │   └── urls.py
-│   ├── posts/               # Posts app (posts, comments)
+│   ├── posts/                 # Post creation, likes, comments
 │   │   ├── models.py
 │   │   ├── views.py
 │   │   ├── serializers.py
 │   │   └── urls.py
 │   ├── requirements.txt
-│   └── media/               # Uploaded images
-└── frontend/                # React app (Vite)
+│   └── media/                 # Uploaded images
+└── frontend/
     ├── src/
-    │   ├── components/     # React components
-    │   ├── api/            # API utility functions
-    │   ├── styles/         # CSS files
+    │   ├── components/        # UI Components
+    │   ├── api/               # API utility methods
+    │   ├── styles/            # CSS/Tailwind styling
     │   ├── App.jsx
     │   └── main.jsx
     ├── package.json
     └── vite.config.js
-```
+This structure separates concerns: backend for API and data logic, frontend for UI and client-side interactions. It follows best practices for full-stack Django-React apps by keeping static files (like React builds) in /static/ for production serving.​
 
-***
+Backend Setup (Django)
+Database Setup (MySQL)
+Install MySQL if needed (e.g., via apt on Ubuntu, brew on macOS, or official installer on Windows). Then create the database:
 
-## 🐍 Backend Setup (Django REST API)
-
-### 1. Database Setup (MySQL)
-
-Install and start MySQL server:
-
-**Ubuntu/Debian:**
-```bash
-sudo apt update
-sudo apt install mysql-server
-sudo systemctl start mysql
-sudo systemctl enable mysql
-```
-
-**macOS:**
-```bash
-brew install mysql
-brew services start mysql
-```
-
-**Windows:**
-Download from [MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
-
-Create database and user:
-```sql
+text
 mysql -u root -p
-CREATE DATABASE post_db;
+CREATE DATABASE cravings_db;
 CREATE USER 'root'@'localhost' IDENTIFIED BY 'root';
-GRANT ALL PRIVILEGES ON post_db.* TO 'root'@'localhost';
+GRANT ALL PRIVILEGES ON cravings_db.* TO 'root'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
-```
+Update settings.py with:
 
-### 2. Backend Environment
-
-```bash
-# Clone or navigate to your project
-cd Cravings/backend
-
-# Create virtual environment
-python3 -m venv venv
-
-# Activate virtual environment
-# Linux/Mac: source venv/bin/activate
-# Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 3. Backend Requirements
-
-Save this as `backend/requirements.txt`:
-
-```txt
-Django==5.1.4
-djangorestframework==3.14.0
-djangorestframework-simplejwt==5.3.1
-mysqlclient==2.2.4
-django-cors-headers==4.3.1
-Pillow==10.1.0
-```
-
-Install:
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Backend Configuration
-
-Your `backend/backend/settings.py` should include:
-
-```python
-# Database (MySQL)
+text
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'post_db',
+        'NAME': 'cravings_db',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',
@@ -136,363 +108,132 @@ DATABASES = {
         },
     }
 }
+Install dependencies from requirements.txt:
 
-# Apps
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'rest_framework_simplejwt.token_blacklist',
-    'users',
-    'posts',
-]
+text
+Django==5.1.4
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+mysqlclient==2.2.4
+django-cors-headers==4.3.1
+Pillow==10.1.0
+Run migrations and create a superuser:
 
-# Middleware (CORS must be near top)
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-# CORS (Development)
-CORS_ALLOW_ALL_ORIGINS = True
-
-# Media Files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-# REST Framework
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
-}
-
-# JWT Settings
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'AUTH_HEADER_TYPES': ('Bearer',),
-}
-```
-
-### 5. Database Migrations
-
-```bash
-# Make migrations for your apps
-python manage.py makemigrations users
-python manage.py makemigrations posts
-
-# Apply migrations
+text
+python manage.py makemigrations users posts
 python manage.py migrate
-
-# Create superuser
 python manage.py createsuperuser
-```
+Start the server: python manage.py runserver 0.0.0.0:8000. Access admin at http://127.0.0.1:8000/admin/.​
 
-### 6. Run Django Backend
+Frontend Setup (React + Vite)
+Install dependencies:
 
-```bash
-python manage.py runserver 0.0.0.0:8000
-```
-
-***
-
-## ⚛️ Frontend Setup (React + Vite)
-
-### 1. Install Dependencies
-
-```bash
+text
 cd frontend
-
-# Install React Router and other dependencies
-npm install react-router-dom
-npm install framer-motion  # For animations (if used)
-npm install
-
-# For development
-npm install
-
-# For production build
+npm install react-router-dom axios framer-motion
 npm run dev
-```
+Add environment variable in .env:
 
-### 2. Frontend Requirements
+text
+VITE_API_URL=http://127.0.0.1:8000
+Example API utility in src/api.js:
 
-Your `frontend/package.json` should include:
+text
+const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
-```json
-{
-  "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.8.0",
-    "framer-motion": "^10.0.0"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  }
-}
-```
+export const getAuthHeaders = () => ({
+  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+  'Content-Type': 'application/json',
+});
 
-### 3. Environment Variables
-
-Create `frontend/.env` for API base URL:
-
-```bash
-REACT_APP_API_BASE=http://127.0.0.1:8000
-```
-
-### 4. API Configuration (frontend/src/api.js)
-
-```javascript
-const API_BASE = 'http://127.0.0.1:8000';
-
-export const getAuthHeaders = () => {
-  const accessToken = localStorage.getItem('accessToken');
-  return {
-    'Authorization': `Bearer ${accessToken}`,
-    'Content-Type': 'application/json',
-  };
-};
-
-// Auth
 export const loginUser = async (username, password) => {
-  const response = await fetch(`${API_BASE}/user/login`, {
+  const response = await fetch(`${API_BASE}/api/user/login/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
   });
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.error || 'Login failed');
-  }
+  if (!response.ok) throw new Error('Login failed');
   return response.json();
 };
 
-export const signUpUser = async (username, email, password) => {
-  const response = await fetch(`${API_BASE}/user/signup`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, email, password }),
-  });
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.error || 'Signup failed');
-  }
-  return response.json();
-};
-
-// Posts
 export const fetchPosts = async () => {
-  const response = await fetch(`${API_BASE}/posts/get`, {
+  const response = await fetch(`${API_BASE}/api/posts/get/`, {
     headers: getAuthHeaders(),
   });
   if (!response.ok) throw new Error('Failed to fetch posts');
   return response.json();
 };
+This sets up API calls with JWT auth. For production, build with npm run build and serve from Django's static files.​​
 
-export const createPost = async (formData) => {
-  const response = await fetch(`${API_BASE}/posts/`, {
-    method: 'POST',
-    headers: getAuthHeaders(),
-    body: formData,
-  });
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.detail || 'Failed to create post');
-  }
-  return response.json();
-};
-```
+API Endpoints
+Method	Endpoint	Description
+POST	/api/user/signup/	Register new user
+POST	/api/user/login/	Login user
+POST	/api/user/logout/	Logout user
+GET	/api/posts/get/	Get all posts
+POST	/api/posts/	Create post
+PUT	/api/posts/<id>/update/	Update post
+DELETE	/api/posts/<id>/delete/	Delete post
+GET	/api/post/<id>/comments/	Get post comments
+POST	/api/post/<id>/add-comment/	Add comment to post
+POST	/api/post/<id>/like/	Like post
+POST	/api/post/<id>/dislike/	Dislike post
+GET	/api/user/get/	Get all users
+POST	/api/user/<id>/follow/	Follow/unfollow user
+These endpoints use REST principles with JWT authentication for protected routes. Test with tools like curl or Postman.​
 
-***
+Features
+JWT Authentication: Secure login/signup with token-based access.
 
-## 🎯 Testing Your Setup
+Post Management: Create, update, delete posts with image uploads.
 
-### Backend Test (Django)
-```bash
-# Start Django server
-python manage.py runserver
+Interactions: Like/dislike posts and add threaded comments.
 
-# Test endpoints
-curl http://127.0.0.1:8000/admin/          # Django admin
-curl http://127.0.0.1:8000/api/user/get    # Get users
-curl http://127.0.0.1:8000/api/posts/get   # Get posts
-```
+User Profiles: Update bio, avatar, and manage followers.
 
-### Frontend Test (React)
-```bash
-# In a separate terminal
-cd frontend
-npm run dev
-```
+Responsive UI: Mobile and desktop support using Tailwind CSS.
 
-Visit `http://localhost:3000` and test:
-- User registration → login
-- Create posts with images
-- Like/dislike posts
-- View comments
-- Follow/unfollow users
-- Profile updates
+Real-time Updates: Instant reactions via API polling.
 
-***
+Search & Filter: Find posts and users easily.
 
-## 🛠️ Development Commands
+The app emphasizes modularity, with Django handling business logic and React managing state via Redux or Context API for optimal performance.​​
 
-### Backend
-```bash
-# Start development server
-python manage.py runserver
+Security
+For development:
 
-# Run with auto-reload
-python manage.py runserver 0.0.0.0:8000
+Set DEBUG = True in settings.py.
 
-# Access Django admin
-http://127.0.0.1:8000/admin/
-```
+Use CORS_ALLOW_ALL_ORIGINS = True.
 
-### Frontend
-```bash
-# Development
-npm run dev
+For production:
 
-# Build for production
-npm run build
+Set DEBUG = False.
 
-# Preview production build
-npm run preview
-```
+Add ALLOWED_HOSTS = ['yourdomain.com'].
 
-***
+Configure CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://yourdomain.com"].
 
-## 📱 API Endpoints Reference
+Use a .env file for secrets: SECRET_KEY=your_secret_key, DB_PASSWORD=root.
 
-### Authentication
-- `POST /api/user/signup` - Register new user
-- `POST /api/user/login` - User login
-- `POST /api/user/logout` - User logout
+Enable HTTPS and validate JWT tokens properly.
 
-### Posts
-- `GET /api/posts/get/` - Get all posts
-- `GET /api/posts/user/` - Get current user's posts
-- `POST /api/posts/` - Create new post
-- `PUT /api/posts/<id>/update/` - Update post
-- `DELETE /api/posts/<id>/delete/` - Delete post
+Avoid exposing sensitive data in commits; use .gitignore for .env files.​
 
-### Interactions
-- `POST /api/post/<id>/like/` - Like post
-- `POST /api/post/<id>/dislike/` - Dislike post
-- `GET /api/post/<id>/interaction-status/` - Check like/dislike status
+Screenshots
+Add placeholders for visuals (upload to /assets/ folder):
 
-### Comments
-- `GET /api/post/<id>/comments/` - Get post comments
-- `POST /api/post/<id>/add-comment/` - Add comment to post
+Login Page: [Insert login screenshot here]
 
-### Users
-- `GET /api/user/get` - Get all users
-- `GET /api/user/<id>/profile/` - Get user profile
-- `POST /api/user/<id>/follow/` - Follow/unfollow user
+Feed: [Insert feed screenshot here]
 
-### Profile
-- `GET /api/user/profile/data` - Get current user profile
-- `POST /api/user/profile/update` - Update current user profile
+Create Post: [Insert post creation screenshot here]
 
-***
+These help showcase the UI without needing embeds.​
 
-## 🔒 Security Notes
-
-### Development
-- `CORS_ALLOW_ALL_ORIGINS = True` (only for development)
-- `DEBUG = True` (disable in production)
-
-### Production
-Update `settings.py`:
-```python
-DEBUG = False
-ALLOWED_HOSTS = ['yourdomain.com']
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Dev React
-    "https://yourdomain.com",  # Production React
-]
-```
-
-### Environment Variables
-Create `.env` in backend root:
-```
-SECRET_KEY=your-secret-key-here
-DB_PASSWORD=your-mysql-password
-```
-
-***
-
-## 📚 Project Features
-
-✅ **User Authentication** - JWT tokens, secure login/signup  
-✅ **Post Management** - Create, read, update, delete posts  
-✅ **Image Uploads** - Profile pictures and post photos  
-✅ **Like/Dislike System** - Vote on posts with counts  
-✅ **Comments** - Threaded comments with replies  
-✅ **Follow/Unfollow** - Social connections between users  
-✅ **Profile Management** - Update user info, bio, avatar  
-✅ **Responsive Design** - Works on desktop, tablet, mobile  
-✅ **Real-time Updates** - Instant like/dislike reactions  
-✅ **Search & Filter** - Find posts and users easily  
-
-***
-
-## 🎬 Demo Video
-
-> [Add demo video URL here when available]
-
-***
-
-## 📞 Support
-
-- Found a bug? [Open an issue](https://github.com/yourusername/cravings/issues)
-- Want to contribute? [See CONTRIBUTING.md](CONTRIBUTING.md)
-- Questions? Check [discussion forum](https://github.com/yourusername/cravings/discussions)
-
-***
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-***
-
-## 🌟 Acknowledgments
-
-- Built with ❤️ for food lovers everywhere
-- Special thanks to Django, React, and open source communities
-
-***
-
-**Made with** 🍴 **by Shaik Rezwan Ali**  
-**Connect:** [LinkedIn](https://linkedin.com/in/shaik-rezwan-ali) 
-
-***
-
-*Note: Before deploying to production, remember to generate a new SECRET_KEY, configure proper CORS settings, and secure your database credentials.*
-
-***
-
-This README provides a comprehensive guide for anyone to download, set up, and run your complete Cravings social media application with both Django backend and React frontend!
+Developer
+Shaik Rezwan Ali
+AI Researcher & Full-Stack Developer
+Email: rezwanalishaik@gmail.com
+LinkedIn: https://linkedin.com/in/shaik-rezwan-ali
+GitHub: https://github.com/rezwanali2003
