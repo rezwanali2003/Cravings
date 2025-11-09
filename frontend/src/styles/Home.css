@@ -1,0 +1,1100 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+/* Global styles for body and common containers */
+body, .posts-horizontal-container, .post-card, .login-container, .profile-container {
+  background-color: #000; /* solid black background */
+  font-family: 'Creepster', cursive;
+  color: #ff4a00; /* bright orange */
+}
+
+.post-card, .login-card, .profile-container {
+  background-color: #100500; /* very dark brownish black, no gradients */
+  border-radius: 16px;
+  box-shadow: none; /* remove gradients/shadows */
+  padding: 1.5rem;
+  font-weight: 900;
+}
+
+input, textarea {
+  background-color: #100500;
+  border: 2px solid #ff4a00;
+  color: #ff6a00;
+  border-radius: 12px;
+  font-family: 'Creepster', cursive;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff6a00;
+  outline: none;
+  box-shadow: none;
+  color: #ffa040;
+  background-color: #100500;
+}
+
+button, .btn-like, .btn-dislike {
+  background-color: #ff4a00; /* solid bright orange */
+  color: #000;
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 1.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn-like:hover, .btn-dislike:hover {
+  background-color: #ff6a00; /* slightly lighter orange on hover */
+}
+
+.post-actions button {
+  margin-right: 12px;
+}
+
+.search-input {
+  background-color: #100500;
+  border: 2px solid #ff4a00;
+  padding: 0.8rem 1rem;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  color: #ff7f00;
+  border-radius: 12px;
+}
+
+.search-input::placeholder {
+  color: #ff4a00aa;
+}
+
+/* User Posts Page */
+.userposts-page {
+  min-height: 100vh;
+  background-color: #000;
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  padding: 2.5rem 4vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.userposts-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.4rem;
+  margin-bottom: 3rem;
+}
+
+.btn-create-post,
+.btn-go-back {
+  background-color: #ff4a00;
+  color: #000;
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 28px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-create-post:hover,
+.btn-go-back:hover {
+  background-color: #ff6f00;
+}
+
+.userposts-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 8px #b24900;
+  text-align: center;
+}
+
+.no-posts-text {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 8rem;
+  color: #ff6b11;
+}
+
+.userposts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* User List Page */
+.userlist-page {
+  min-height: 100vh;
+  background: #000;
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 5vw;
+  box-sizing: border-box;
+}
+
+.userlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.userlist-header h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 10px #b24900;
+}
+
+.userlist-main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.userlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.userlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #330a00;
+}
+
+.btn-view-profile {
+  background-color: transparent;
+  border: 2px solid #ff4a00;
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  border-radius: 14px;
+  padding: 6px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1.4rem;
+}
+
+.btn-view-profile:hover {
+  background-color: #ff4a00;
+  color: #000;
+}
+
+/* Signup Page */
+.signup-container {
+  max-width: 480px;
+  margin: 6rem auto;
+  background-color: #000; /* changed from #100500 to pure black */
+  padding: 3rem 3rem 3rem;
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #ff4a00; /* bright orange */
+  font-family: 'Creepster', cursive;
+  text-align: center;
+}
+
+.signup-title {
+  font-size: 3.3rem;
+  font-weight: 900;
+  margin-bottom: 2.2rem;
+  color: #ff4a00;
+  text-shadow: 2px 2px 10px #b24900;
+}
+
+.signup-error {
+  background-color: #b43000;
+  color: rgb(248, 247, 247);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.4rem;
+  font-weight: 700;
+}
+
+.signup-form label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  text-align: left;
+  text-shadow: 1px 1px 3px #601900;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.8rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  background-color: #3b1300;
+  border: 2px solid #ff4a00;
+  border-radius: 14px;
+  color: #ffb26b;
+  font-family: 'Creepster', cursive;
+  transition: border-color 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: #ff8148cc;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ff6a00;
+  color: #fff5cc;
+  background-color: #5d1d00;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 1.1rem;
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #140600;
+  background-color: #ff4a00;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: 'Creepster', cursive;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #ff6b11;
+}
+
+.signup-text {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #ff6a00;
+}
+
+.signup-text a {
+  color: #ffb56b;
+  font-weight: 900;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-text a:hover {
+  color: #ffda93;
+  text-decoration: underline;
+}
+
+/* Horizontal Posts Container */
+.posts-horizontal-container {
+  padding: 1.5rem 2rem;
+  background-color: #000;
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+}
+
+.search-container {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.search-input {
+  width: 80%;
+  max-width: 500px;
+  padding: 0.75rem 1.1rem;
+  border-radius: 14px;
+  border: none;
+  background-color: #2b0f00;
+  color: #ffad6d;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: inset 0 0 10px #ff6f00aa;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #ff7e30cc;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 18px #ff9300cc, inset 0 0 16px #ffb140cc;
+  color: #ffe7b0;
+  background-color: #431f00;
+}
+
+.posts-horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  gap: 16px;
+}
+
+.posts-horizontal-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.posts-horizontal-scroll::-webkit-scrollbar-thumb {
+  background-color: #ff6d10;
+  border-radius: 4px;
+}
+
+.post-item {
+  min-width: 300px;
+  flex-shrink: 0;
+  background-color: #1c0a00;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px #ff5a0055;
+  color: #ff8a3c;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.post-item:hover {
+  box-shadow: 0 10px 20px #ff7a1255;
+  transform: scale(1.05);
+}
+
+.no-posts-message {
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Post Like/Dislike Buttons */
+.btn-like, .btn-dislike {
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-like {
+  background-color: transparent;
+  border-color: #ff4a00;
+  color: #ff4a00;
+}
+
+.btn-like.active,
+.btn-like:hover {
+  background-color: #ff4a00;
+  color: #000;
+  border-color: #ff4a00;
+}
+
+.btn-dislike {
+  background-color: transparent;
+  border-color: #c24100;
+  color: #c24100;
+}
+
+.btn-dislike.active,
+.btn-dislike:hover {
+  background-color: #c24100;
+  border-color: #c24100;
+  color: #000;
+}
+
+/* Button icon size */
+.btn-like span, .btn-dislike span {
+  font-size: 1.4rem;
+}
+
+/* Individual Post Card */
+.post-card {
+  background-color: #1c0a00;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px #ff5a0055;
+  color: #ff8a3c;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.post-photo {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.post-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #ff4a00;
+  text-shadow: 0 0 6px #c74100;
+}
+
+.post-content {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #f7a864;
+}
+
+.post-author {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.post-author-name {
+  color: #ff9427;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-actions button {
+  background: transparent;
+  border: 2px solid transparent;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: 'Creepster', cursive;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #ff8a3c;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.post-actions button:hover {
+  box-shadow: 0 0 10px #ff6d0c;
+  color: #ff4a00;
+}
+
+.btn-like {
+  border-color: #ff4a00;
+}
+
+.btn-like.active {
+  background-color: #ff4a00;
+  color: #1c0a00;
+}
+
+.btn-dislike {
+  border-color: #c24100;
+}
+
+.btn-dislike.active {
+  background-color: #c24100;
+  color: #1c0a00;
+}
+
+.btn-comments {
+  border: 2px solid #ff9f44;
+  color: #ff9f44;
+  font-weight: 700;
+}
+
+.btn-comments:hover {
+  background-color: #ff9f44;
+  color: #1c0a00;
+  box-shadow: 0 0 15px #ffaa49;
+}
+
+.post-message {
+  font-size: 0.875rem;
+  color: #ff6a00cc;
+  margin-top: 4px;
+}
+
+/* Login Page */
+.page-container {
+  height: 100vh;
+  background-color: #000; /* pure black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Creepster', cursive;
+}
+
+.login-card {
+  background-color: #1f0a00; /* dark brownish black */
+  padding: 3.5rem 3rem 3rem;
+  border-radius: 20px;
+  width: 420px;
+  box-shadow:
+    0 0 35px rgba(255, 90, 0, 0.75),
+    inset 0 0 22px rgba(255, 90, 0, 0.45);
+  color: #ff5000;
+  text-align: center;
+}
+
+.login-header {
+  font-weight: 900;
+  font-size: 3.5rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  text-shadow:
+    2px 2px 12px #5f2300,
+    0 0 45px #ff6f00dd;
+}
+
+.login-error {
+  background: #b43200;
+  color: white;
+  padding: 0.9rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 0 14px #b4320000;
+}
+
+.login-form label {
+  display: block;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  text-align: left;
+  text-shadow: 1px 1px 5px #3f1500;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 2rem;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffaf65;
+  background-color: #3b1500;
+  box-shadow: inset 0 0 10px #f2620080;
+  transition: 0.3s box-shadow ease;
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 0 14px #ffa700cc, inset 0 0 14px #ffa700cc;
+  color: #fff9eb;
+  background-color: #562000;
+}
+
+.login-btn {
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  font-size: 1.55rem;
+  letter-spacing: 0.12em;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(to right, #ff5500, #ff9500);
+  color: #fff;
+  box-shadow:
+    0 0 36px #ff7a1600,
+    inset 0 -5px 16px #ff9b2200;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+  text-transform: uppercase;
+}
+
+.login-btn:hover {
+  background: linear-gradient(to right, #ff6b00, #ffb034);
+  box-shadow:
+    0 0 45px #ff9a2aaf,
+    inset 0 -5px 20px #ffb334bb;
+}
+
+.signup-msg {
+  margin-top: 1.8rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #ff7e32;
+}
+
+.signup-msg a {
+  text-decoration: none;
+  color: #ffaf6a;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.signup-msg a:hover {
+  color: #ffbd31;
+  text-decoration: underline;
+}
+
+/* Chain Hero Background */
+.chain-hero-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-tagline {
+  position: absolute;
+  top: 12vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #ff4a00;
+  font-family: 'Creepster', cursive; /* Creepy font here */
+  font-size: 2.1rem;
+  letter-spacing: 1.2px;
+  text-shadow: 0 3px 18px #18050070;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cravings-chain-text,
+.craving-letter,
+.welcome-username-hungry {
+  font-family: 'Creepster', cursive; /* Creepy font everywhere */
+}
+
+.cravings-chain-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: -18px;
+  width: 100vw;
+  font-size: clamp(5rem, 20vw, 40rem);
+  font-weight: 900;
+}
+
+.craving-letter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.7) translateY(50px);
+  color: #ff4a00;
+  text-shadow: 0px 8px 0 #b74200, 0px 16px 52px #000d;
+  animation: letterIn 0.8s cubic-bezier(.23,1.15,.37,1.15) forwards;
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    text-shadow 0.5s ease,
+    color 0.3s ease;
+}
+
+.craving-letter.loaded {
+  opacity: 1;
+  transform: scale(1.09) translateY(0px);
+  animation: letterFloat 2.3s cubic-bezier(.3,1.3,.3,1) infinite alternate,
+             wobble 1.9s infinite alternate cubic-bezier(.4,2,.7,.2);
+}
+
+.craving-letter:hover {
+  color: #ff731a;
+  transform: scale(1.18) translateY(-16px) rotate(-2deg) skewX(-4deg);
+  z-index: 10;
+  text-shadow:
+    0 3px 14px #ff5200cc,
+    0 18px 54px #c03809ee;
+}
+
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7) translateY(65px);
+    filter: blur(13px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.09) translateY(0px);
+    filter: blur(0px);
+  }
+}
+
+@keyframes letterFloat {
+  0%   { transform: scale(1.09) translateY(0px);}
+  100% { transform: scale(1.11) translateY(-28px);}
+}
+
+@keyframes wobble {
+  0%   { filter: none; transform: none; }
+  18%  { filter: none; transform: skewX(-2deg) skewY(1deg); }
+  32%  { filter: blur(1.3px) brightness(1.07); transform: skewX(2deg) scaleY(1.04); }
+  55%  { filter: blur(0.9px); transform: skewX(-2deg) scaleX(0.99); }
+  70%  { filter: none; transform: skewY(-1deg); }
+  100% { filter: none; transform: none; }
+}
+
+.welcome-username-hungry {
+  position: absolute;
+  bottom: 7vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #b74200;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 4px 14px #240e04, 0 9px 32px #ad2c0b77;
+}
+  
+@media (max-width: 700px) {
+  .cravings-chain-text { font-size: clamp(2.0rem, 23vw, 6rem); }
+  .cta-tagline { font-size: 1.2rem; top: 2vh; }
+  .welcome-username-hungry { font-size: 1.18rem; }
+}
+
+.post-cta-container {
+  margin-top: 2.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+.post-cta-button {
+  background-color: #ff4a00;
+  color: #fff;
+  font-family: 'Creepster', cursive;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  padding: 0.85rem 2.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow:
+    0 6px 20px #ff6d1abb,
+    inset 0 -6px 15px #e24a00cc;
+  transition: background-color 0.3s ease;
+}
+
+.post-cta-button:hover {
+  background-color: #ff6d1a;
+  box-shadow:
+    0 10px 27px #ff8a2aee,
+    inset 0 -6px 18px #ef7100cc;
+}
+
+.post-cta-caption {
+  margin-top: 1rem;
+  font-family: 'Creepster', cursive;
+  font-size: 1.25rem;
+  color: #ff4a00;
+  text-shadow: 0 0 12px #ff520022;
+}
+
+/* Posts List Container */
+.posts-container {
+  padding: 20px;
+  background-color: #000; /* black background for mood */
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 80%;
+  max-width: 500px;
+  padding: 12px 20px;
+  font-family: 'Creepster', cursive;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #2b0f00;
+  color: #ffad6d;
+  box-shadow: inset 0 0 10px #ff6f00aa;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 15px #ffa751, inset 0 0 12px #ffb240;
+}
+
+.posts-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  gap: 16px;
+}
+
+.post-card {
+  min-width: 300px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background-color: #1c0a00;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(255, 99, 71, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(255, 99, 71, 0.4);
+}
+
+.no-posts {
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  font-size: 1.35rem;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Additional overrides for consistency */
+.input-field {
+  /* Merged from signup and login */
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.8rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  background-color: #3b1300;
+  border: 2px solid #ff4a00;
+  border-radius: 14px;
+  color: #ffb26b;
+  font-family: 'Creepster', cursive;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 10px #f2620080;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ff6a00;
+  color: #fff5cc;
+  background-color: #5d1d00;
+  box-shadow: 0 0 14px #ffa700cc, inset 0 0 14px #ffa700cc;
+}
+
+.search-input {
+  /* Merged search styles */
+  width: 80%;
+  max-width: 500px;
+  padding: 0.75rem 1.1rem;
+  border-radius: 14px;
+  border: 2px solid #ff4a00;
+  background-color: #2b0f00;
+  color: #ffad6d;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: inset 0 0 10px #ff6f00aa;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 18px #ff9300cc, inset 0 0 16px #ffb140cc;
+  color: #ffe7b0;
+  background-color: #431f00;
+  border-color: #ff6a00;
+}
+
+.search-input::placeholder {
+  color: #ff7e30cc;
+}
+
+.post-card {
+  /* Merged post-card styles */
+  background-color: #1c0a00;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px #ff5a0055;
+  color: #ff8a3c;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  margin-bottom: 16px;
+  min-width: 300px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px #ff7a1255, 0 12px 24px rgba(255, 99, 71, 0.4);
+}
+
+.no-posts {
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.35rem;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.no-posts-message,
+.no-posts-text {
+  /* Merged no-posts styles */
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 20px;
+  margin-top: 8rem;
+}
+/* Fixed Navbar - Black/Orange Theme */
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000; /* Pure black */
+  border-bottom: 2px solid #ff4a00; /* Orange underline */
+  box-shadow: 0 4px 20px rgba(255, 74, 0, 0.3); /* Subtle orange glow */
+  z-index: 1000; /* Stays on top of everything */
+  font-family: 'Creepster', cursive;
+  color: #ff4a00;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px; /* Fixed height for consistency */
+}
+
+.navbar-logo {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ff4a00;
+  text-decoration: none;
+  text-shadow: 2px 2px 8px #b24900;
+  transition: color 0.3s ease;
+}
+
+.navbar-logo:hover {
+  color: #ff6f00;
+  text-shadow: 2px 2px 12px #ff6f00;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #ff4a00;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 3px #601900;
+}
+
+.nav-link:hover {
+  background-color: #ff4a00;
+  color: #000;
+  box-shadow: 0 0 10px #ff6f00;
+  transform: translateY(-2px);
+}
+
+.nav-logout-btn {
+  background-color: #ff4a00;
+  color: #000;
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.nav-logout-btn:hover {
+  background-color: #ff6f00;
+  box-shadow: 0 0 15px #ff6f00;
+}
+
+.navbar-toggle {
+  display: none; /* Hidden on desktop */
+  font-size: 2rem;
+  color: #ff4a00;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Layout Wrapper - Ensures content scrolls under fixed nav */
+.layout-wrapper {
+  min-height: 100vh;
+  background-color: #000;
+}
+
+.layout-main {
+  margin-top: 70px; /* Offset for fixed navbar height */
+  min-height: calc(100vh - 70px);
+  padding-bottom: 2rem; /* Extra space at bottom */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hide links on mobile; toggle with JS if needed */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .navbar-toggle {
+    display: block;
+  }
+  
+  .navbar-container {
+    padding: 0 1rem;
+  }
+  
+  .navbar-logo {
+    font-size: 1.8rem;
+  }
+  
+  .layout-main {
+    margin-top: 70px;
+  }
+}

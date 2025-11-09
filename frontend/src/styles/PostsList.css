@@ -1,0 +1,128 @@
+/* Container with black background and orange text */
+.posts-horizontal-container {
+  padding: 1.5rem 2rem;
+  background-color: #000;
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+}
+
+.search-container {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.search-input {
+  width: 80%;
+  max-width: 500px;
+  padding: 0.75rem 1.1rem;
+  border-radius: 14px;
+  border: none;
+  background-color: #2b0f00;
+  color: #ffad6d;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: inset 0 0 10px #ff6f00aa;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #ff7e30cc;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 18px #ff9300cc, inset 0 0 16px #ffb140cc;
+  color: #ffe7b0;
+  background-color: #431f00;
+}
+
+.posts-horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  gap: 16px;
+}
+
+.posts-horizontal-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.posts-horizontal-scroll::-webkit-scrollbar-thumb {
+  background-color: #ff6d10;
+  border-radius: 4px;
+}
+
+.post-item {
+  min-width: 300px;
+  flex-shrink: 0;
+  background-color: #1c0a00;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px #ff5a0055;
+  color: #ff8a3c;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.post-item:hover {
+  box-shadow: 0 10px 20px #ff7a1255;
+  transform: scale(1.05);
+}
+
+.no-posts-message {
+  color: #ff4a00;
+  font-family: 'Creepster', cursive;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Post like/dislike button styles */
+
+.btn-like, .btn-dislike {
+  font-family: 'Creepster', cursive;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-like {
+  background-color: transparent;
+  border-color: #ff4a00;
+  color: #ff4a00;
+}
+
+.btn-like.active,
+.btn-like:hover {
+  background-color: #ff4a00;
+  color: #000;
+  border-color: #ff4a00;
+}
+
+.btn-dislike {
+  background-color: transparent;
+  border-color: #c24100;
+  color: #c24100;
+}
+
+.btn-dislike.active,
+.btn-dislike:hover {
+  background-color: #c24100;
+  border-color: #c24100;
+  color: #000;
+}
+
+/* Button icon size */
+.btn-like span, .btn-dislike span {
+  font-size: 1.4rem;
+}
