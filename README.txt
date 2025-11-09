@@ -235,5 +235,5 @@ Developer
 Shaik Rezwan Ali
 AI Researcher & Full-Stack Developer
 Email: rezwanalishaik@gmail.com
-LinkedIn: https://linkedin.com/in/shaik-rezwan-ali
+LinkedIn: https://www.linkedin.com/in/shaik-rezwan-ali-5b6a31235/
 GitHub: https://github.com/rezwanali2003
